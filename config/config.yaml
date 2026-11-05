@@ -1,0 +1,39 @@
+paths:
+  data_dir: "dataset/"
+  vector_store_dir: "vector_store/"
+
+embedding:
+  model_name: "all-MiniLM-L6-v2" # Or another Sentence Transformer model
+  device: "cpu" # Or "cuda" if GPU available and configured
+  normalize_embeddings: False
+
+text_splitter:
+  chunk_size: 1000
+  chunk_overlap: 200
+
+llm:
+  model_name: "tinydolphin" # Or "llama3", etc. (model pulled in Ollama)
+  model_base_url: "http://ollama:11434" # Default Ollama URL
+  provider: "Ollama"
+  temperature: 0.7
+
+vector_store:
+  type: "ChromaClient" 
+  # persist_directory: Path where ChromaDB will save its files, relative to project root
+  # persist_directory: "./vector_store"
+  chroma_server_url: "http://chromadb:8000"
+
+ingestion:
+  chunk_size: 1000
+  chunk_overlap: 200
+  supported_extensions: [".txt", ".pdf"] # Files to process
+
+api:
+  host: "0.0.0.0"
+  port: 8000
+  # Add API keys or other sensitive info via .env or secrets management
+
+logging:
+  level: "INFO" # e.g., DEBUG, INFO, WARNING, ERROR
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  log_file: "./logs/rag_assistant.log"

@@ -1,0 +1,23 @@
+# Core Framework
+# LangChain often evolves rapidly. These versions are known to be broadly compatible around early 2024.
+langchain>=0.2.0,<0.3.0            # <-- IMPORTANT: Update to 0.2.x range
+langchain-community>=0.0.36,<0.1.0 # <-- Update to match, 0.0.36 is fine here
+langchain-chroma>=0.3.0,<0.4.0     # Keep this range, compatible with 0.2.x core.
+chromadb>=0.5.0,<0.6.0    
+langchain-core>=0.1.48            # Explicitly pin langchain-core if auto-resolution fails,
+                                  # but often it's best to let langchain/community pull it in.
+                                  # For now, let's remove this line and see if updating others resolves it.
+                                  # If it fails again, we might need to be more aggressive or specific.
+
+# Other dependencies (keep your existing versions if they were working)
+torch==2.1.2                       # Pin torch to a stable version, your log was showing 2.7.0, let's try 2.1.2 as it's common
+sentence-transformers==2.7.0      # This version was installed in your logs, so keep it.
+python-dotenv==1.0.1
+PyYAML==6.0.1
+fastapi==0.110.0
+uvicorn[standard]==0.29.0
+pypdf==4.2.0
+
+# Development/CI dependencies (consider moving to requirements-dev.txt for prod builds)
+flake8
+pytest
